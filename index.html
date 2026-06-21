@@ -252,19 +252,81 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   color:var(--ink-soft);letter-spacing:.06em;opacity:.7}
 .divider .hint,.cover .hint{color:rgba(255,255,255,.55)}
 
-/* ---- responsive ---- */
+/* ---- responsive : TABLET ---- */
 @media(max-width:900px){
   .agenda-grid{grid-template-columns:1fr;gap:12px}
   .cadence-wrap{grid-template-columns:1fr;gap:16px}
-  .cal-grid{grid-template-columns:1fr}
   .slide.pad{padding:24px 18px 56px}
-  .phone-row{flex-wrap:wrap;gap:14px;overflow:auto;align-content:center}
-  .phone-frame{height:min(46vh,380px)!important}
   .feed-card{width:min(92vw,420px)}
   .browser-frame{width:96vw}
   .lp-frame{width:166.66%;height:166.66%;transform:scale(.6)}
   .vs-header{flex-direction:column;align-items:flex-start;gap:.5rem}
-  .nav-arrow{width:40px;height:40px}
+}
+
+/* ---- responsive : PHONE (<=640px) ---- */
+@media(max-width:640px){
+  /* base slide padding leaves room for bottom nav bar */
+  .slide{padding:env(safe-area-inset-top) 16px calc(74px + env(safe-area-inset-bottom))}
+  .slide.pad{padding:max(20px,env(safe-area-inset-top)) 16px calc(78px + env(safe-area-inset-bottom))}
+  .slide:not(.pad){justify-content:center}
+
+  /* COVER + DIVIDERS : keep titles inside the viewport */
+  .cover-inner,.divider-inner{padding:0 18px}
+  .cover-title{font-size:clamp(2rem,9.5vw,3rem);line-height:1.05}
+  .cover-sub{font-size:1rem;margin-top:1rem}
+  .cover-meta{margin-top:1.6rem;font-size:.66rem;gap:.5rem}
+  .cover-corner{width:64px;height:64px}
+  .cover-corner.tl{top:24px;left:24px} .cover-corner.br{bottom:84px;right:24px}
+  .divider-title{font-size:clamp(1.9rem,8.5vw,2.8rem)}
+  .divider-sub{font-size:1.05rem}
+  .divider-num{font-size:.8rem;margin-bottom:1rem}
+
+  /* SECTION HEADERS */
+  .slide-h2{font-size:clamp(1.5rem,6.5vw,2rem)}
+  .vs-desc{font-size:1rem;max-width:100%}
+
+  /* PHONE MOCKUPS : show ONE phone per row, vertically scrollable, fully visible */
+  .phone-row{flex-direction:column;flex-wrap:nowrap;gap:30px;overflow-y:auto;
+    align-items:center;justify-content:flex-start;padding:8px 0 4px;-webkit-overflow-scrolling:touch}
+  .phone{height:auto;width:auto;flex:0 0 auto;justify-content:flex-start;gap:10px}
+  .phone-frame,
+  .phone-row.count-1 .phone-frame,
+  .phone-row.count-2 .phone-frame{height:min(58vh,440px)!important;width:auto;aspect-ratio:9/16}
+  figcaption{font-size:.9rem}
+  /* hint that there is more to scroll when multiple phones */
+  .phone-row::-webkit-scrollbar{width:0}
+
+  /* AD / FEED / CAROUSEL */
+  .feed-card.ratio-9x16,.feed-card.ratio-4x5,.feed-card.ratio-1x1,.carousel-ad .feed-card{
+    width:min(86vw,360px);min-width:0;max-height:none}
+  .ad-stage{overflow-y:auto;align-items:flex-start;padding-top:8px}
+  .browser-frame{width:96vw;max-height:70vh}
+  .lp-frame{width:200%;height:200%;transform:scale(.5)}
+
+  /* CALENDAR : becomes a readable vertical AGENDA (only days with posts) */
+  .cal-header{flex-direction:column;align-items:flex-start;gap:.7rem}
+  .cal-legend-inline{flex-wrap:wrap;gap:.7rem 1rem;font-size:.6rem}
+  .cal-dow{display:none}                      /* weekday header row not needed in list view */
+  .cal-weeks{display:block;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch}
+  .cal-week{display:block}
+  .cal-cell{display:none}                      /* hide blank days */
+  .cal-cell.has-post{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;
+    width:100%;margin-bottom:10px;padding:14px 16px;border-radius:14px;min-height:0;
+    border-color:rgba(0,0,52,.14)}
+  .cal-cell.has-post .d{font-size:1.5rem;margin-bottom:0;min-width:1.6em;text-align:center}
+  .cal-cell.has-post .cal-post{margin-top:0;border-left-width:4px;background:transparent;
+    padding:0 0 0 12px;border-radius:0}
+  .cal-post .ptitle{font-size:.92rem;-webkit-line-clamp:3}
+  .cal-post .ptag{font-size:.58rem}
+  .cal-post .pplat{font-size:.6rem}
+
+  /* NAV CHROME : fixed bottom bar so arrows never cover content */
+  .nav-arrow{position:fixed;top:auto;bottom:calc(12px + env(safe-area-inset-bottom));transform:none;
+    width:46px;height:46px;background:rgba(0,0,52,.16)}
+  .nav-prev{left:16px}.nav-next{right:16px}
+  .divider .nav-arrow,.cover .nav-arrow{background:rgba(255,255,255,.18)}
+  .counter{bottom:calc(20px + env(safe-area-inset-bottom));font-size:.66rem;padding:5px 12px}
+  .slide-label{display:none}
   .hint{display:none}
 }
 </style>
