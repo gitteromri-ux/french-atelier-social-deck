@@ -80,32 +80,40 @@ body{font-family:var(--sans);color:var(--ink);background:#000;overflow:hidden;-w
 .chip-organic{background:var(--gold-deep)}
 .chip-website{background:var(--navy)}
 
-/* ---- CALENDAR ---- */
-.cal-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(14px,2.4vh,26px)}
-.cal-legend-inline{display:flex;gap:1.2rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);
+/* ---- CALENDAR (true monthly grid) ---- */
+.cal-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(12px,2vh,22px)}
+.cal-legend-inline{display:flex;gap:1.3rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);
   text-transform:uppercase;letter-spacing:.1em}
-.cal-legend-inline span{display:flex;align-items:center;gap:.4rem}
+.cal-legend-inline span{display:flex;align-items:center;gap:.45rem}
 .cal-legend-inline .chip{width:11px;height:11px;border-radius:3px}
-.cal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.1vw,14px);
-  overflow:auto;align-content:start}
-.cal-card{display:flex;gap:14px;background:var(--beige-card);border:1px solid var(--line);
-  border-left:4px solid var(--gold-deep);border-radius:12px;padding:12px 16px;align-items:flex-start}
-.cal-card.type-bastille{border-left-color:var(--rouge)}
-.cal-card.type-organic{border-left-color:var(--gold-deep)}
-.cal-card.type-website{border-left-color:var(--navy)}
-.cal-date{flex:0 0 auto;text-align:center;min-width:54px}
-.cal-day{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase}
-.cal-num{display:block;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--navy);white-space:nowrap}
-.cal-body{flex:1;min-width:0}
-.cal-top{display:flex;gap:.5rem;align-items:center;margin-bottom:.25rem;flex-wrap:wrap}
-.cal-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;
-  padding:2px 8px;border-radius:20px;color:#fff}
-.tag-bastille{background:var(--rouge)}
-.tag-organic{background:var(--gold-deep)}
-.tag-website{background:var(--navy)}
-.cal-plat{font-family:var(--mono);font-size:.62rem;color:var(--gold-deep);letter-spacing:.06em}
-.cal-body h4{font-family:var(--display);font-weight:600;font-size:.98rem;color:var(--navy);line-height:1.2;margin-bottom:.15rem}
-.cal-body p{font-size:.78rem;color:var(--ink-soft);line-height:1.4}
+.cal-month{flex:1;display:flex;flex-direction:column;min-height:0}
+.cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(6px,.7vw,10px);margin-bottom:clamp(6px,.8vh,10px)}
+.cal-dow span{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold-deep);text-align:left;padding-left:.2rem}
+.cal-weeks{flex:1;display:grid;grid-auto-rows:1fr;gap:clamp(6px,.7vw,10px);min-height:0}
+.cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(6px,.7vw,10px);min-height:0}
+.cal-cell{background:var(--beige-card);border:1px solid var(--line);border-radius:12px;
+  padding:clamp(7px,.8vw,11px);display:flex;flex-direction:column;min-height:0;overflow:hidden;
+  box-shadow:0 4px 14px rgba(0,0,52,.04)}
+.cal-cell.empty{background:transparent;border-color:transparent;box-shadow:none}
+.cal-cell.has-post{border-color:rgba(0,0,52,.16)}
+.cal-cell .d{font-family:var(--display);font-weight:700;font-size:clamp(.95rem,1.3vw,1.25rem);
+  color:var(--navy);line-height:1;margin-bottom:.35rem}
+.cal-cell.empty .d{color:rgba(0,0,52,.18)}
+.cal-post{border-left:3px solid var(--gold-deep);background:rgba(169,141,82,.07);
+  border-radius:7px;padding:.32rem .5rem;margin-top:auto;min-width:0}
+.cal-post.p-bastille{border-left-color:var(--rouge);background:rgba(200,52,75,.08)}
+.cal-post.p-organic{border-left-color:var(--gold-deep);background:rgba(169,141,82,.08)}
+.cal-post.p-website{border-left-color:var(--navy);background:rgba(0,0,52,.06)}
+.cal-post .pt{display:flex;align-items:center;gap:.35rem;margin-bottom:.12rem}
+.cal-post .ptag{font-family:var(--mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:1px 6px;border-radius:20px;color:#fff;white-space:nowrap}
+.ptag-bastille{background:var(--rouge)}
+.ptag-organic{background:var(--gold-deep)}
+.ptag-website{background:var(--navy)}
+.cal-post .pplat{font-family:var(--mono);font-size:.52rem;color:var(--gold-deep);letter-spacing:.04em}
+.cal-post .ptitle{font-family:var(--sans);font-weight:600;font-size:clamp(.62rem,.78vw,.78rem);
+  color:var(--navy);line-height:1.18;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* ---- DIVIDERS ---- */
 .divider{background:
@@ -131,12 +139,29 @@ body{font-family:var(--sans);color:var(--ink);background:#000;overflow:hidden;-w
   color:var(--ink-soft);margin:.6rem 0 clamp(14px,2.5vh,28px);max-width:60ch}
 .phone-row{flex:1;display:flex;gap:clamp(16px,2.4vw,38px);justify-content:center;align-items:center;min-height:0}
 .phone{display:flex;flex-direction:column;align-items:center;gap:12px;min-height:0;height:100%;justify-content:center}
-.phone-frame{position:relative;height:min(62vh,520px);aspect-ratio:9/19;background:#000;border-radius:30px;
-  border:7px solid #14110c;box-shadow:0 24px 50px rgba(0,0,52,.22),0 4px 12px rgba(0,0,0,.3);overflow:hidden}
-.phone-row.count-1 .phone-frame{height:min(70vh,620px)}
-.phone-row.count-2 .phone-frame{height:min(66vh,560px)}
-.phone-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38%;height:18px;
-  background:#000;border-radius:0 0 14px 14px;z-index:4}
+.phone-frame{position:relative;height:min(62vh,520px);aspect-ratio:9/19.5;background:#05050a;border-radius:42px;
+  padding:5px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 38px 70px -18px rgba(0,0,52,.45),
+    0 12px 28px -8px rgba(0,0,0,.4),
+    inset 0 0 0 2px #1c1a20,
+    inset 0 0 0 7px #050507;
+  overflow:hidden}
+.phone-row.count-1 .phone-frame{height:min(70vh,640px)}
+.phone-row.count-2 .phone-frame{height:min(66vh,580px)}
+.phone-screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:#000}
+/* Dynamic Island */
+.phone-notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:30%;height:21px;
+  background:#000;border-radius:14px;z-index:6;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.phone-notch::after{content:'';position:absolute;right:11px;top:50%;transform:translateY(-50%);
+  width:7px;height:7px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#2a3550,#070910 70%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+/* screen glare/reflection */
+.phone-frame::after{content:'';position:absolute;inset:5px;border-radius:37px;pointer-events:none;z-index:7;
+  background:linear-gradient(135deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 78%,rgba(255,255,255,.04) 100%)}
 .phone-video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
 .phone-handle{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:var(--mono);
   font-size:.6rem;color:rgba(255,255,255,.82);letter-spacing:.08em;z-index:3;text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none}
@@ -321,105 +346,56 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       <span><i class="chip chip-website"></i>Website</span>
     </div>
   </div>
-  <div class="cal-grid">
-      <div class="cal-card type-bastille">
-        <div class="cal-date">
-          <span class="cal-day">Sun</span>
-          <span class="cal-num">Jun 22</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-bastille">Carousel</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>LAUNCH — Bastille Day Giveaway</h4>
-          <p>6-slide carousel (most info). Win a free flight to Paris for Bastille Day.</p>
-        </div>
+  <div class="cal-month">
+    <div class="cal-dow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    <div class="cal-weeks">
+      <div class="cal-week">
+        <div class="cal-cell"><span class="d">1</span></div>
+        <div class="cal-cell"><span class="d">2</span></div>
+        <div class="cal-cell"><span class="d">3</span></div>
+        <div class="cal-cell"><span class="d">4</span></div>
+        <div class="cal-cell"><span class="d">5</span></div>
+        <div class="cal-cell"><span class="d">6</span></div>
+        <div class="cal-cell"><span class="d">7</span></div>
       </div>
-      <div class="cal-card type-bastille">
-        <div class="cal-date">
-          <span class="cal-day">Tue</span>
-          <span class="cal-num">Jun 24</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-bastille">Reel</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Win-a-Flight Reel</h4>
-          <p>Different Bastille Day ad — hero reel driving entries.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell"><span class="d">8</span></div>
+        <div class="cal-cell"><span class="d">9</span></div>
+        <div class="cal-cell"><span class="d">10</span></div>
+        <div class="cal-cell"><span class="d">11</span></div>
+        <div class="cal-cell"><span class="d">12</span></div>
+        <div class="cal-cell"><span class="d">13</span></div>
+        <div class="cal-cell"><span class="d">14</span></div>
       </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Wed</span>
-          <span class="cal-num">Jun 25</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Organic</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Organic Video</h4>
-          <p>Formal vs Spoken French — save-worthy language clip.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell"><span class="d">15</span></div>
+        <div class="cal-cell"><span class="d">16</span></div>
+        <div class="cal-cell"><span class="d">17</span></div>
+        <div class="cal-cell"><span class="d">18</span></div>
+        <div class="cal-cell"><span class="d">19</span></div>
+        <div class="cal-cell"><span class="d">20</span></div>
+        <div class="cal-cell"><span class="d">21</span></div>
       </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Fri</span>
-          <span class="cal-num">Jun 27</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Organic</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Organic Video</h4>
-          <p>French Homonyms — same sound, different meaning.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell has-post"><span class="d">22</span><div class="cal-post p-bastille"><div class="pt"><span class="ptag ptag-bastille">Carousel</span><span class="pplat">Meta + IG</span></div><div class="ptitle">LAUNCH · Bastille Day Giveaway</div></div></div>
+        <div class="cal-cell"><span class="d">23</span></div>
+        <div class="cal-cell has-post"><span class="d">24</span><div class="cal-post p-bastille"><div class="pt"><span class="ptag ptag-bastille">Reel</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Win-a-Flight ad #2</div></div></div>
+        <div class="cal-cell has-post"><span class="d">25</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Organic</span><span class="pplat">IG</span></div><div class="ptitle">Formal vs Spoken French</div></div></div>
+        <div class="cal-cell"><span class="d">26</span></div>
+        <div class="cal-cell has-post"><span class="d">27</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Organic</span><span class="pplat">IG</span></div><div class="ptitle">French Homonyms clip</div></div></div>
+        <div class="cal-cell has-post"><span class="d">28</span><div class="cal-post p-bastille"><div class="pt"><span class="ptag ptag-bastille">Reel</span><span class="pplat">Meta + IG</span></div><div class="ptitle">LAST ad · 2 days left</div></div></div>
       </div>
-      <div class="cal-card type-bastille">
-        <div class="cal-date">
-          <span class="cal-day">Sat</span>
-          <span class="cal-num">Jun 28</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-bastille">Reel</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>LAST Bastille Day Ad — 2 Days Left</h4>
-          <p>Urgency reel (reel-3). Final push before entries close.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell has-post"><span class="d">29</span><div class="cal-post p-website"><div class="pt"><span class="ptag ptag-website">Website</span><span class="pplat">IG</span></div><div class="ptitle">Mapstr Paris map post</div></div></div>
+        <div class="cal-cell has-post"><span class="d">30</span><div class="cal-post p-bastille"><div class="pt"><span class="ptag ptag-bastille">Winners</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Announce 3 flight winners</div></div></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
       </div>
-      <div class="cal-card type-website">
-        <div class="cal-date">
-          <span class="cal-day">Sun</span>
-          <span class="cal-num">Jun 29</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-website">Website</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Mapstr Post</h4>
-          <p>Curated Paris map from the new website — drive saves &amp; site visits.</p>
-        </div>
-      </div>
-      <div class="cal-card type-bastille">
-        <div class="cal-date">
-          <span class="cal-day">Mon</span>
-          <span class="cal-num">Jun 30</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-bastille">Winners</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Announce Flight Winners</h4>
-          <p>Bastille Day ad reworked with a congratulations message for the 3 winners.</p>
-        </div>
-      </div></div>
+    </div>
+  </div>
 </section>
 
 <section class="slide light pad calendar-slide" data-label="July Calendar">
@@ -434,154 +410,63 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       <span><i class="chip chip-website"></i>Website</span>
     </div>
   </div>
-  <div class="cal-grid">
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Wed</span>
-          <span class="cal-num">Jul 2</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Organic + CTA</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Organic Video → Enroll Now</h4>
-          <p>Course info CTA appended. Convert engaged audience.</p>
-        </div>
+  <div class="cal-month">
+    <div class="cal-dow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    <div class="cal-weeks">
+      <div class="cal-week">
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell"><span class="d">1</span></div>
+        <div class="cal-cell has-post"><span class="d">2</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Organic</span><span class="pplat">IG</span></div><div class="ptitle">Organic video → Enroll</div></div></div>
+        <div class="cal-cell"><span class="d">3</span></div>
+        <div class="cal-cell has-post"><span class="d">4</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Masterclass</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Philippe masterclass upload</div></div></div>
+        <div class="cal-cell"><span class="d">5</span></div>
       </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Fri</span>
-          <span class="cal-num">Jul 4</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Masterclass</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Philippe Masterclass</h4>
-          <p>Paid-media masterclass video uploaded organically.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell has-post"><span class="d">6</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Organic</span><span class="pplat">IG</span></div><div class="ptitle">Beauty video → Enroll</div></div></div>
+        <div class="cal-cell"><span class="d">7</span></div>
+        <div class="cal-cell"><span class="d">8</span></div>
+        <div class="cal-cell has-post"><span class="d">9</span><div class="cal-post p-website"><div class="pt"><span class="ptag ptag-website">Website</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Check out our new website</div></div></div>
+        <div class="cal-cell"><span class="d">10</span></div>
+        <div class="cal-cell has-post"><span class="d">11</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Organic</span><span class="pplat">IG</span></div><div class="ptitle">Organic video → Enroll</div></div></div>
+        <div class="cal-cell"><span class="d">12</span></div>
       </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Sun</span>
-          <span class="cal-num">Jul 6</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Organic + CTA</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Organic Beauty Video → Enroll Now</h4>
-          <p>French Wines / Breakfast aesthetic clip + course CTA.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell has-post"><span class="d">13</span><div class="cal-post p-website"><div class="pt"><span class="ptag ptag-website">Website</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Meet Julien · AI Tutor</div></div></div>
+        <div class="cal-cell"><span class="d">14</span></div>
+        <div class="cal-cell has-post"><span class="d">15</span><div class="cal-post p-bastille"><div class="pt"><span class="ptag ptag-bastille">Live</span><span class="pplat">IG</span></div><div class="ptitle">Bastille Day live from Paris</div></div></div>
+        <div class="cal-cell"><span class="d">16</span></div>
+        <div class="cal-cell has-post"><span class="d">17</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Masterclass</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Masterclass → Enroll</div></div></div>
+        <div class="cal-cell"><span class="d">18</span></div>
+        <div class="cal-cell has-post"><span class="d">19</span><div class="cal-post p-website"><div class="pt"><span class="ptag ptag-website">Bundle</span><span class="pplat">IG</span></div><div class="ptitle">LSF · perfect 2-course bundle</div></div></div>
       </div>
-      <div class="cal-card type-website">
-        <div class="cal-date">
-          <span class="cal-day">Wed</span>
-          <span class="cal-num">Jul 9</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-website">Website</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Check Out Our New Website</h4>
-          <p>Showcase the live site — hero motion, Julien AI tutor, programs.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell"><span class="d">20</span></div>
+        <div class="cal-cell"><span class="d">21</span></div>
+        <div class="cal-cell has-post"><span class="d">22</span><div class="cal-post p-organic"><div class="pt"><span class="ptag ptag-organic">Organic</span><span class="pplat">Meta + IG</span></div><div class="ptitle">Organic video + course post</div></div></div>
+        <div class="cal-cell"><span class="d">23</span></div>
+        <div class="cal-cell"><span class="d">24</span></div>
+        <div class="cal-cell"><span class="d">25</span></div>
+        <div class="cal-cell"><span class="d">26</span></div>
       </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Fri</span>
-          <span class="cal-num">Jul 11</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Organic + CTA</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Organic Video → Enroll Now</h4>
-          <p>Course info CTA. Keep momentum into mid-July.</p>
-        </div>
+      <div class="cal-week">
+        <div class="cal-cell"><span class="d">27</span></div>
+        <div class="cal-cell"><span class="d">28</span></div>
+        <div class="cal-cell"><span class="d">29</span></div>
+        <div class="cal-cell"><span class="d">30</span></div>
+        <div class="cal-cell"><span class="d">31</span></div>
+        <div class="cal-cell empty"></div>
+        <div class="cal-cell empty"></div>
       </div>
-      <div class="cal-card type-website">
-        <div class="cal-date">
-          <span class="cal-day">Sun</span>
-          <span class="cal-num">Jul 13</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-website">Website + CTA</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Meet Julien — Our AI Tutor</h4>
-          <p>Feature from the website → Enroll Now / Course info.</p>
-        </div>
-      </div>
-      <div class="cal-card type-bastille">
-        <div class="cal-date">
-          <span class="cal-day">Tue</span>
-          <span class="cal-num">Jul 15</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-bastille">Live</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>Bastille Day — Live From Paris</h4>
-          <p>Behind-the-scenes / live content from the Paris experience.</p>
-        </div>
-      </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Thu</span>
-          <span class="cal-num">Jul 17</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Masterclass + CTA</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Masterclass → Enroll Now</h4>
-          <p>Paid-media masterclass uploaded organically + course CTA.</p>
-        </div>
-      </div>
-      <div class="cal-card type-website">
-        <div class="cal-date">
-          <span class="cal-day">Sat</span>
-          <span class="cal-num">Jul 19</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-website">Bundle</span>
-            <span class="cal-plat">IG</span>
-          </div>
-          <h4>LSF — The Perfect Bundle</h4>
-          <p>Post on the perfect bundle of our 2 courses.</p>
-        </div>
-      </div>
-      <div class="cal-card type-organic">
-        <div class="cal-date">
-          <span class="cal-day">Tue</span>
-          <span class="cal-num">Jul 22</span>
-        </div>
-        <div class="cal-body">
-          <div class="cal-top">
-            <span class="cal-tag tag-organic">Organic + CTA</span>
-            <span class="cal-plat">Meta + IG</span>
-          </div>
-          <h4>Organic Video + Course Post</h4>
-          <p>Organic clip → Enroll Now / Course info.</p>
-        </div>
-      </div></div>
+    </div>
+  </div>
 </section>
 
 <section class="slide divider" data-label="Section 1">
   <div class="divider-inner">
     <div class="divider-num">01</div>
     <h2 class="divider-title">Organic Video Library</h2>
-    <p class="divider-sub">30 videos · 9 series · ready to post</p>
+    <p class="divider-sub">27 videos · 9 series · ready to post</p>
     <p class="divider-note">Tap any phone to play with sound — exact timing, resolution and audio from the source files.</p>
   </div>
 </section>
@@ -592,69 +477,73 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       <div class="kicker">Organic Series</div>
       <h2 class="slide-h2">Formal vs Spoken French</h2>
     </div>
-    <div class="vs-count">12 videos</div>
+    <div class="vs-count">9 videos</div>
   </div>
   <p class="vs-desc">Side-by-side phrases — how the French actually say it vs. the textbook. Punchy, save-worthy, highly shareable.</p>
   <div class="phone-row count-4">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-1.jpg"
-              data-src="assets/vid/formal-vs-spoken-1.mp4">
-              <source src="assets/vid/formal-vs-spoken-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-1.jpg"
+                data-src="assets/vid/formal-vs-spoken-1.mp4">
+                <source src="assets/vid/formal-vs-spoken-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Formal vs Spoken 1 · 22s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-2.jpg"
-              data-src="assets/vid/formal-vs-spoken-2.mp4">
-              <source src="assets/vid/formal-vs-spoken-2.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-5.jpg"
+                data-src="assets/vid/formal-vs-spoken-5.mp4">
+                <source src="assets/vid/formal-vs-spoken-5.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>Formal vs Spoken 2 · 6s</figcaption>
+          <figcaption>Formal vs Spoken 5 · 10s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-3.jpg"
-              data-src="assets/vid/formal-vs-spoken-3.mp4">
-              <source src="assets/vid/formal-vs-spoken-3.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-6.jpg"
+                data-src="assets/vid/formal-vs-spoken-6.mp4">
+                <source src="assets/vid/formal-vs-spoken-6.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>Formal vs Spoken 3 · 6s</figcaption>
+          <figcaption>Formal vs Spoken 6 · 12s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-4.jpg"
-              data-src="assets/vid/formal-vs-spoken-4.mp4">
-              <source src="assets/vid/formal-vs-spoken-4.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-7.jpg"
+                data-src="assets/vid/formal-vs-spoken-7.mp4">
+                <source src="assets/vid/formal-vs-spoken-7.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>Formal vs Spoken 4 · 6s</figcaption>
+          <figcaption>Formal vs Spoken 7 · 14s</figcaption>
         </figure></div>
 </section>
 
@@ -664,69 +553,73 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       <div class="kicker">Organic Series</div>
       <h2 class="slide-h2">Formal vs Spoken French</h2>
     </div>
-    <div class="vs-count">12 videos</div>
+    <div class="vs-count">9 videos</div>
   </div>
   <p class="vs-desc">Side-by-side phrases — how the French actually say it vs. the textbook. Punchy, save-worthy, highly shareable.</p>
   <div class="phone-row count-4">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-5.jpg"
-              data-src="assets/vid/formal-vs-spoken-5.mp4">
-              <source src="assets/vid/formal-vs-spoken-5.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
-          </div>
-          <figcaption>Formal vs Spoken 5 · 10s</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-6.jpg"
-              data-src="assets/vid/formal-vs-spoken-6.mp4">
-              <source src="assets/vid/formal-vs-spoken-6.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
-          </div>
-          <figcaption>Formal vs Spoken 6 · 12s</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-7.jpg"
-              data-src="assets/vid/formal-vs-spoken-7.mp4">
-              <source src="assets/vid/formal-vs-spoken-7.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
-          </div>
-          <figcaption>Formal vs Spoken 7 · 14s</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-8.jpg"
-              data-src="assets/vid/formal-vs-spoken-8.mp4">
-              <source src="assets/vid/formal-vs-spoken-8.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-8.jpg"
+                data-src="assets/vid/formal-vs-spoken-8.mp4">
+                <source src="assets/vid/formal-vs-spoken-8.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Formal vs Spoken 8 · 13s</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-9.jpg"
+                data-src="assets/vid/formal-vs-spoken-9.mp4">
+                <source src="assets/vid/formal-vs-spoken-9.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
+          </div>
+          <figcaption>Formal vs Spoken 9 · 10s</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-10.jpg"
+                data-src="assets/vid/formal-vs-spoken-10.mp4">
+                <source src="assets/vid/formal-vs-spoken-10.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
+          </div>
+          <figcaption>Formal vs Spoken 10 · 9s</figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-11.jpg"
+                data-src="assets/vid/formal-vs-spoken-11.mp4">
+                <source src="assets/vid/formal-vs-spoken-11.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
+          </div>
+          <figcaption>Formal vs Spoken 11 · 10s</figcaption>
         </figure></div>
 </section>
 
@@ -736,69 +629,25 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       <div class="kicker">Organic Series</div>
       <h2 class="slide-h2">Formal vs Spoken French</h2>
     </div>
-    <div class="vs-count">12 videos</div>
+    <div class="vs-count">9 videos</div>
   </div>
   <p class="vs-desc">Side-by-side phrases — how the French actually say it vs. the textbook. Punchy, save-worthy, highly shareable.</p>
-  <div class="phone-row count-4">
+  <div class="phone-row count-1">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-9.jpg"
-              data-src="assets/vid/formal-vs-spoken-9.mp4">
-              <source src="assets/vid/formal-vs-spoken-9.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/formal-vs-spoken-12.jpg"
+                data-src="assets/vid/formal-vs-spoken-12.mp4">
+                <source src="assets/vid/formal-vs-spoken-12.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>Formal vs Spoken 9 · 10s</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-10.jpg"
-              data-src="assets/vid/formal-vs-spoken-10.mp4">
-              <source src="assets/vid/formal-vs-spoken-10.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
-          </div>
-          <figcaption>Formal vs Spoken 10 · 9s</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-11.jpg"
-              data-src="assets/vid/formal-vs-spoken-11.mp4">
-              <source src="assets/vid/formal-vs-spoken-11.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
-          </div>
-          <figcaption>Formal vs Spoken 11 · 10s</figcaption>
-        </figure>
-        <figure class="phone">
-          <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/formal-vs-spoken-12.jpg"
-              data-src="assets/vid/formal-vs-spoken-12.mp4">
-              <source src="assets/vid/formal-vs-spoken-12.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
-          </div>
-          <figcaption>Formal vs Spoken 12 · 10s</figcaption>
+          <figcaption>Formal vs Spoken 12 · 9s</figcaption>
         </figure></div>
 </section>
 
@@ -814,61 +663,65 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-4">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-1.jpg"
-              data-src="assets/vid/homonyms-1.mp4">
-              <source src="assets/vid/homonyms-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-1.jpg"
+                data-src="assets/vid/homonyms-1.mp4">
+                <source src="assets/vid/homonyms-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 1 · 9s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-2.jpg"
-              data-src="assets/vid/homonyms-2.mp4">
-              <source src="assets/vid/homonyms-2.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-2.jpg"
+                data-src="assets/vid/homonyms-2.mp4">
+                <source src="assets/vid/homonyms-2.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 2 · 10s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-3.jpg"
-              data-src="assets/vid/homonyms-3.mp4">
-              <source src="assets/vid/homonyms-3.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-3.jpg"
+                data-src="assets/vid/homonyms-3.mp4">
+                <source src="assets/vid/homonyms-3.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 3 · 12s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-4.jpg"
-              data-src="assets/vid/homonyms-4.mp4">
-              <source src="assets/vid/homonyms-4.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-4.jpg"
+                data-src="assets/vid/homonyms-4.mp4">
+                <source src="assets/vid/homonyms-4.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 4 · 12s</figcaption>
         </figure></div>
@@ -886,61 +739,65 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-4">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-5.jpg"
-              data-src="assets/vid/homonyms-5.mp4">
-              <source src="assets/vid/homonyms-5.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-5.jpg"
+                data-src="assets/vid/homonyms-5.mp4">
+                <source src="assets/vid/homonyms-5.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 5 · 17s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-6.jpg"
-              data-src="assets/vid/homonyms-6.mp4">
-              <source src="assets/vid/homonyms-6.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-6.jpg"
+                data-src="assets/vid/homonyms-6.mp4">
+                <source src="assets/vid/homonyms-6.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 6 · 18s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-7.jpg"
-              data-src="assets/vid/homonyms-7.mp4">
-              <source src="assets/vid/homonyms-7.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-7.jpg"
+                data-src="assets/vid/homonyms-7.mp4">
+                <source src="assets/vid/homonyms-7.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 7 · 13s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/homonyms-8.jpg"
-              data-src="assets/vid/homonyms-8.mp4">
-              <source src="assets/vid/homonyms-8.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/homonyms-8.jpg"
+                data-src="assets/vid/homonyms-8.mp4">
+                <source src="assets/vid/homonyms-8.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
           <figcaption>Homonyms 8 · 20s</figcaption>
         </figure></div>
@@ -958,18 +815,19 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-1">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-cheeses-1.jpg"
-              data-src="assets/vid/french-cheeses-1.mp4">
-              <source src="assets/vid/french-cheeses-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-cheeses-1.jpg"
+                data-src="assets/vid/french-cheeses-1.mp4">
+                <source src="assets/vid/french-cheeses-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French Cheeses 1.mov · 24s</figcaption>
+          <figcaption>French Cheeses · 24s</figcaption>
         </figure></div>
 </section>
 
@@ -985,33 +843,35 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-2">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-wines-1.jpg"
-              data-src="assets/vid/french-wines-1.mp4">
-              <source src="assets/vid/french-wines-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-wines-1.jpg"
+                data-src="assets/vid/french-wines-1.mp4">
+                <source src="assets/vid/french-wines-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French wines 1.mov · 36s</figcaption>
+          <figcaption>French Wines 1 · 36s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-wines-2.jpg"
-              data-src="assets/vid/french-wines-2.mp4">
-              <source src="assets/vid/french-wines-2.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-wines-2.jpg"
+                data-src="assets/vid/french-wines-2.mp4">
+                <source src="assets/vid/french-wines-2.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French wines 2.mov · 35s</figcaption>
+          <figcaption>French Wines 2 · 35s</figcaption>
         </figure></div>
 </section>
 
@@ -1027,18 +887,19 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-1">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-history-1.jpg"
-              data-src="assets/vid/french-history-1.mp4">
-              <source src="assets/vid/french-history-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-history-1.jpg"
+                data-src="assets/vid/french-history-1.mp4">
+                <source src="assets/vid/french-history-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French history.mov · 35s</figcaption>
+          <figcaption>French History · 35s</figcaption>
         </figure></div>
 </section>
 
@@ -1054,18 +915,19 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-1">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-holiday-1.jpg"
-              data-src="assets/vid/french-holiday-1.mp4">
-              <source src="assets/vid/french-holiday-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-holiday-1.jpg"
+                data-src="assets/vid/french-holiday-1.mp4">
+                <source src="assets/vid/french-holiday-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French holiday 1.mov · 40s</figcaption>
+          <figcaption>French Holidays · 40s</figcaption>
         </figure></div>
 </section>
 
@@ -1081,18 +943,19 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-1">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-tourism-1.jpg"
-              data-src="assets/vid/french-tourism-1.mp4">
-              <source src="assets/vid/french-tourism-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-tourism-1.jpg"
+                data-src="assets/vid/french-tourism-1.mp4">
+                <source src="assets/vid/french-tourism-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French tourism.mov · 34s</figcaption>
+          <figcaption>French Tourism · 34s</figcaption>
         </figure></div>
 </section>
 
@@ -1108,18 +971,19 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="phone-row count-1">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-wardrobe-1.jpg"
-              data-src="assets/vid/french-wardrobe-1.mp4">
-              <source src="assets/vid/french-wardrobe-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-wardrobe-1.jpg"
+                data-src="assets/vid/french-wardrobe-1.mp4">
+                <source src="assets/vid/french-wardrobe-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French wardrobe.mov · 35s</figcaption>
+          <figcaption>French Wardrobe · 35s</figcaption>
         </figure></div>
 </section>
 
@@ -1131,52 +995,55 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
     </div>
     <div class="vs-count">3 videos</div>
   </div>
-  <p class="vs-desc">Slow, sensory morning rituals — café, croissant, the art of taking your time.</p>
+  <p class="vs-desc">The art of the French morning — petit-déjeuner done properly.</p>
   <div class="phone-row count-3">
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-breakfast-1.jpg"
-              data-src="assets/vid/french-breakfast-1.mp4">
-              <source src="assets/vid/french-breakfast-1.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-breakfast-1.jpg"
+                data-src="assets/vid/french-breakfast-1.mp4">
+                <source src="assets/vid/french-breakfast-1.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French Breakfast 1 · 47s</figcaption>
+          <figcaption>Breakfast 1 · 47s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-breakfast-2.jpg"
-              data-src="assets/vid/french-breakfast-2.mp4">
-              <source src="assets/vid/french-breakfast-2.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-breakfast-2.jpg"
+                data-src="assets/vid/french-breakfast-2.mp4">
+                <source src="assets/vid/french-breakfast-2.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French Breakfast 2 · 45s</figcaption>
+          <figcaption>Breakfast 2 · 45s</figcaption>
         </figure>
         <figure class="phone">
           <div class="phone-frame">
-            <div class="phone-notch"></div>
-            <video class="phone-video" playsinline preload="metadata"
-              poster="assets/poster/french-breakfast-3.jpg"
-              data-src="assets/vid/french-breakfast-3.mp4">
-              <source src="assets/vid/french-breakfast-3.mp4" type="video/mp4">
-            </video>
-            <button class="play-btn" aria-label="Play video">
-              <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-            </button>
-            <div class="phone-handle">@livefrenchatelier</div>
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <video class="phone-video" playsinline preload="metadata"
+                poster="assets/poster/french-breakfast-3.jpg"
+                data-src="assets/vid/french-breakfast-3.mp4">
+                <source src="assets/vid/french-breakfast-3.mp4" type="video/mp4">
+              </video>
+              <button class="play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+              </button>
+            </div>
           </div>
-          <figcaption>French Breakfast 3 · 38s</figcaption>
+          <figcaption>Breakfast 3 · 37s</figcaption>
         </figure></div>
 </section>
 
@@ -1392,7 +1259,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
   <div class="divider-inner">
     <div class="brand-mark small">FRENCH ATELIER</div>
     <h2 class="divider-title">Merci.</h2>
-    <p class="divider-sub">June–July 2026 · 30 organic videos · Bastille Day Win-a-Flight</p>
+    <p class="divider-sub">June–July 2026 · 27 organic videos · Bastille Day Win-a-Flight</p>
     <p class="divider-note">@livefrenchatelier · Meta &amp; Instagram</p>
   </div>
 </section>
