@@ -178,15 +178,15 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
 .play-btn.hidden{display:none}
 
 /* ---- AD SLIDES / FEED MOCKUP ---- */
-.dl-mp4{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:9px 18px;
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;
-  color:#fff;background:#1a1a1a;border-radius:999px;text-decoration:none;
-  transition:background .2s ease,transform .15s ease}
+.dl-mp4{position:absolute;top:10px;right:10px;z-index:6;display:inline-flex;align-items:center;gap:5px;
+  padding:7px 12px;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;
+  color:#fff;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);border-radius:999px;text-decoration:none;
+  box-shadow:0 2px 8px rgba(0,0,0,.3);transition:background .2s ease,transform .15s ease}
 .dl-mp4:hover{background:#000;transform:translateY(-1px)}
 .ad-header{text-align:center;margin-bottom:clamp(10px,2vh,22px)}
 .ad-header .kicker{display:inline-block}
 .ad-sub{font-family:var(--serif);font-style:italic;font-size:clamp(.98rem,1.6vw,1.3rem);color:var(--ink-soft);margin-top:.5rem}
-.ad-stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:0;padding:4px 0;overflow:hidden}
+.ad-stage{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:4px 0;overflow:hidden}
 .feed-card{background:#fff;border-radius:16px;overflow:hidden;
   box-shadow:0 26px 60px rgba(0,0,52,.20),0 4px 14px rgba(0,0,0,.12);border:1px solid var(--line);
   display:flex;flex-direction:column;max-height:100%}
@@ -1141,6 +1141,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/reel-1-win-flight.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-1-win-flight.mp4" download>⬇ MP4</a>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1148,7 +1149,6 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       </div>
       <div class="feed-caption"><strong>livefrenchatelier</strong> Win a free flight to Paris for Bastille Day 🇫🇷 Enter now — link in bio. <span class="feed-tags">#FrenchAtelier #BastilleDay #WinAFlight</span></div>
     </div>
-    <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-1-win-flight.mp4" download>⬇ Download MP4</a>
   </div>
 </section>
 
@@ -1170,6 +1170,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/reel-2-three-winners.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-2-three-winners.mp4" download>⬇ MP4</a>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1177,7 +1178,6 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       </div>
       <div class="feed-caption"><strong>livefrenchatelier</strong> Three winners. One unforgettable Bastille Day in Paris. ✈️ Enter now. <span class="feed-tags">#FrenchAtelier #BastilleDay #WinAFlight</span></div>
     </div>
-    <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-2-three-winners.mp4" download>⬇ Download MP4</a>
   </div>
 </section>
 
@@ -1199,6 +1199,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/reel-3-2days-left.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-3-2days-left.mp4" download>⬇ MP4</a>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1206,7 +1207,6 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       </div>
       <div class="feed-caption"><strong>livefrenchatelier</strong> ⏳ Only 2 days left to win your flight to Paris. Don&#x27;t miss it — enter now! <span class="feed-tags">#FrenchAtelier #BastilleDay #WinAFlight</span></div>
     </div>
-    <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-3-2days-left.mp4" download>⬇ Download MP4</a>
   </div>
 </section>
 
@@ -1228,6 +1228,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/banner-feed-4x5.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/banner-feed-4x5.mp4" download>⬇ MP4</a>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1235,7 +1236,6 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       </div>
       <div class="feed-caption"><strong>livefrenchatelier</strong> Your flight to Paris is waiting. Win it for Bastille Day. ✈️🇫🇷 <span class="feed-tags">#FrenchAtelier #BastilleDay #WinAFlight</span></div>
     </div>
-    <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/banner-feed-4x5.mp4" download>⬇ Download MP4</a>
   </div>
 </section>
 
@@ -1257,6 +1257,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/banner-square-1x1.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/banner-square-1x1.mp4" download>⬇ MP4</a>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1264,7 +1265,6 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
       </div>
       <div class="feed-caption"><strong>livefrenchatelier</strong> Win a free flight to Paris. 3 winners. Bastille Day. ✈️ <span class="feed-tags">#FrenchAtelier #BastilleDay #WinAFlight</span></div>
     </div>
-    <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/banner-square-1x1.mp4" download>⬇ Download MP4</a>
   </div>
 </section>
 
