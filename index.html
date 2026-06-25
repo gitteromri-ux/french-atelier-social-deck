@@ -185,6 +185,17 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
 .dl-mp4:hover{transform:translateY(-2px);box-shadow:0 5px 0 #111,0 10px 18px rgba(0,0,0,.5)}
 .dl-mp4:active{transform:translateY(1px);box-shadow:0 1px 0 #111}
 .dl-mp4.dl-phone{top:8px;right:8px;padding:6px 10px;font-size:.6rem;gap:4px;box-shadow:0 2px 0 #111,0 4px 8px rgba(0,0,0,.4)}
+/* multi-size download dropdown */
+.dl-wrap{position:absolute;top:12px;right:12px;z-index:30}
+.dl-wrap .dl-mp4{position:static;top:auto;right:auto}
+.dl-menu{position:absolute;top:calc(100% + 6px);right:0;display:none;flex-direction:column;gap:4px;
+  background:#0c1424;border:2px solid #111;border-radius:12px;padding:6px;min-width:150px;
+  box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.dl-wrap.open .dl-menu{display:flex}
+.dl-menu a{font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.04em;color:#fff;
+  text-decoration:none;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,.06);white-space:nowrap}
+.dl-menu a:hover{background:#FFD400;color:#111}
+.dl-menu .dl-head{color:#FFD400;font-size:.58rem;letter-spacing:.08em;padding:2px 6px 4px;background:none}
 .ad-header{text-align:center;margin-bottom:clamp(10px,2vh,22px)}
 .ad-header .kicker{display:inline-block}
 .ad-sub{font-family:var(--serif);font-style:italic;font-size:clamp(.98rem,1.6vw,1.3rem);color:var(--ink-soft);margin-top:.5rem}
@@ -1170,7 +1181,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/reel-1-win-flight.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-1-win-flight.mp4" download>⬇ DOWNLOAD</a>
+        <div class="dl-wrap"><button type="button" class="dl-mp4" onclick="this.parentNode.classList.toggle('open')">⬇ DOWNLOAD</button><div class="dl-menu"><span class="dl-head">CHOOSE SIZE</span><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-1-win-flight/reel-1-win-flight_9x16.mp4" download>⬇ 9:16 · Reels/Stories</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-1-win-flight/reel-1-win-flight_4x5.mp4" download>⬇ 4:5 · Feed</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-1-win-flight/reel-1-win-flight_1x1.mp4" download>⬇ 1:1 · Square</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-1-win-flight/reel-1-win-flight_16x9.mp4" download>⬇ 16:9 · YouTube</a></div></div>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1199,7 +1210,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/reel-2-three-winners.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-2-three-winners.mp4" download>⬇ DOWNLOAD</a>
+        <div class="dl-wrap"><button type="button" class="dl-mp4" onclick="this.parentNode.classList.toggle('open')">⬇ DOWNLOAD</button><div class="dl-menu"><span class="dl-head">CHOOSE SIZE</span><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-2-three-winners/reel-2-three-winners_9x16.mp4" download>⬇ 9:16 · Reels/Stories</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-2-three-winners/reel-2-three-winners_4x5.mp4" download>⬇ 4:5 · Feed</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-2-three-winners/reel-2-three-winners_1x1.mp4" download>⬇ 1:1 · Square</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-2-three-winners/reel-2-three-winners_16x9.mp4" download>⬇ 16:9 · YouTube</a></div></div>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1228,7 +1239,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/reel-3-2days-left.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/reel-3-2days-left.mp4" download>⬇ DOWNLOAD</a>
+        <div class="dl-wrap"><button type="button" class="dl-mp4" onclick="this.parentNode.classList.toggle('open')">⬇ DOWNLOAD</button><div class="dl-menu"><span class="dl-head">CHOOSE SIZE</span><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-3-2days-left/reel-3-2days-left_9x16.mp4" download>⬇ 9:16 · Reels/Stories</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-3-2days-left/reel-3-2days-left_4x5.mp4" download>⬇ 4:5 · Feed</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-3-2days-left/reel-3-2days-left_1x1.mp4" download>⬇ 1:1 · Square</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/reel-3-2days-left/reel-3-2days-left_16x9.mp4" download>⬇ 16:9 · YouTube</a></div></div>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1257,7 +1268,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/banner-feed-4x5.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/banner-feed-4x5.mp4" download>⬇ DOWNLOAD</a>
+        <div class="dl-wrap"><button type="button" class="dl-mp4" onclick="this.parentNode.classList.toggle('open')">⬇ DOWNLOAD</button><div class="dl-menu"><span class="dl-head">CHOOSE SIZE</span><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-feed-4x5/banner-feed-4x5_9x16.mp4" download>⬇ 9:16 · Reels/Stories</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-feed-4x5/banner-feed-4x5_4x5.mp4" download>⬇ 4:5 · Feed</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-feed-4x5/banner-feed-4x5_1x1.mp4" download>⬇ 1:1 · Square</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-feed-4x5/banner-feed-4x5_16x9.mp4" download>⬇ 16:9 · YouTube</a></div></div>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1286,7 +1297,7 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
           <source src="assets/ads/banner-square-1x1.mp4" type="video/mp4">
         </video>
         <button class="play-btn big" aria-label="Play"><svg viewBox="0 0 24 24" width="44" height="44"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-        <a class="dl-mp4" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/banner-square-1x1.mp4" download>⬇ DOWNLOAD</a>
+        <div class="dl-wrap"><button type="button" class="dl-mp4" onclick="this.parentNode.classList.toggle('open')">⬇ DOWNLOAD</button><div class="dl-menu"><span class="dl-head">CHOOSE SIZE</span><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-square-1x1/banner-square-1x1_9x16.mp4" download>⬇ 9:16 · Reels/Stories</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-square-1x1/banner-square-1x1_4x5.mp4" download>⬇ 4:5 · Feed</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-square-1x1/banner-square-1x1_1x1.mp4" download>⬇ 1:1 · Square</a><a href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/banner-square-1x1/banner-square-1x1_16x9.mp4" download>⬇ 16:9 · YouTube</a></div></div>
       </div>
       <div class="feed-actions">
         <span class="fa-icons">♥&nbsp;&nbsp;💬&nbsp;&nbsp;➤</span>
@@ -1311,7 +1322,15 @@ figcaption{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft);text-a
         <div class="feed-more">···</div>
       </div>
       <div class="feed-media car-media">
-        <a class="dl-mp4 car-dl" style="left:10px;right:auto;" href="https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/carousel-1.jpg" download>⬇ DOWNLOAD</a>
+        <div class="dl-wrap car-dlwrap" style="left:10px;right:auto;">
+          <button type="button" class="dl-mp4" onclick="this.parentNode.classList.toggle('open')">⬇ DOWNLOAD</button>
+          <div class="dl-menu"><span class="dl-head">CURRENT SLIDE</span>
+            <a class="car-dl" data-r="9x16" href="#" download>⬇ 9:16 · Reels/Stories</a>
+            <a class="car-dl" data-r="4x5" href="#" download>⬇ 4:5 · Feed</a>
+            <a class="car-dl" data-r="1x1" href="#" download>⬇ 1:1 · Square</a>
+            <a class="car-dl" data-r="16x9" href="#" download>⬇ 16:9 · YouTube</a>
+          </div>
+        </div>
         <div class="car-track"><div class="car-slide"><img src="assets/ads/carousel-1.jpg" alt="Carousel slide 1" loading="lazy"></div><div class="car-slide"><img src="assets/ads/carousel-2.jpg" alt="Carousel slide 2" loading="lazy"></div><div class="car-slide"><img src="assets/ads/carousel-3.jpg" alt="Carousel slide 3" loading="lazy"></div><div class="car-slide"><img src="assets/ads/carousel-4.jpg" alt="Carousel slide 4" loading="lazy"></div><div class="car-slide"><img src="assets/ads/carousel-5.jpg" alt="Carousel slide 5" loading="lazy"></div><div class="car-slide"><img src="assets/ads/carousel-6.jpg" alt="Carousel slide 6" loading="lazy"></div></div>
         <button class="car-nav car-prev" aria-label="Previous">‹</button>
         <button class="car-nav car-next" aria-label="Next">›</button>
@@ -1431,13 +1450,14 @@ document.querySelectorAll('.carousel-card').forEach(card=>{
   const slidesC=card.querySelectorAll('.car-slide');
   const dots=card.querySelectorAll('.car-dot');
   const count=card.querySelector('.car-count');
-  const dl=card.querySelector('.car-dl');
-  const dlBase='https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads/carousel-';
+  const dlLinks=card.querySelectorAll('.car-dl');
+  const dlBase='https://github.com/gitteromri-ux/french-atelier-social-deck/raw/main/assets/ads_sizes/carousel-';
   let c=0;const total=slidesC.length;
   function go(n){c=(n+total)%total;track.style.transform='translateX(-'+(c*100)+'%)';
     dots.forEach((d,k)=>d.classList.toggle('active',k===c));
     if(count)count.textContent=(c+1)+'/'+total;
-    if(dl)dl.href=dlBase+(c+1)+'.jpg';}
+    const idx=c+1;
+    dlLinks.forEach(a=>{const r=a.getAttribute('data-r');a.href=dlBase+idx+'/carousel-'+idx+'_'+r+'.jpg';});}
   card.querySelector('.car-prev').addEventListener('click',e=>{e.stopPropagation();go(c-1);});
   card.querySelector('.car-next').addEventListener('click',e=>{e.stopPropagation();go(c+1);});
   dots.forEach((d,k)=>d.addEventListener('click',e=>{e.stopPropagation();go(k);}));
